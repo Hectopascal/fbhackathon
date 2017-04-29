@@ -76,7 +76,8 @@ Template.player.events({
         if(recording) {
             audioRecorder.stopRecording('Uint8Array', 'ArrayBufferFile', function (error, result) {
                 var data = new Blob([result],{type:'audio/wav'});
-                var audioFile = new File([data],'input.wav');
+                var fileName = prompt("Please name your file:", "voice");
+                var audioFile = new File([data],fileName+".mp3");
                 audioInsert(audioFile, true);
             });
             //audioRecorder.stopRecording('wav', 'wavFile');

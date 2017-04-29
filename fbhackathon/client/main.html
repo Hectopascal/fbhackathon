@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/media/css/aeditor.css">
         <link rel="stylesheet" href="/main.css">
-            <style>body { background-color: #197972; color: #ffffff }
+            <style>body { background-image: url("/media/background.png");; color: #ffffff }
             </style>
 
         <script src="/audiojs/audio.min.js"></script>  
@@ -31,34 +31,24 @@ Main Page
   
   </div>
   
-  <div class="row" style="background-color: #F5F5F5; color: black; margin: 20px; padding-top: 10px; padding">
+  <div class="row" style="background-color: #F5F5F5; color: black; margin: 20px; border-radius: 5px; padding: 5px; box-shadow: 5px 5px 10px;">
   {{#each uploads}}
-  <div class="col-xs-3">
+    <div class="col-xs-3" style="border-radius: 4px; margin: 0px; padding: 0px">
+    <div  style="border: 2px solid black; border-radius: 4px; margin: 5px; padding: 0px; text-align: center;">
     <table id="soundBox">
       <tr>Placeholder name</tr>
-      <!--lol-->
-<!--
-      <div id="top-bar" class="playlist-top-bar">
-          <div class="playlist-toolbar">
-            <div class="btn-group">
-              <span class="btn-pause btn btn-warning"><i class="fa fa-pause"></i></span>
-              <span class="btn-play btn btn-success"><i class="fa fa-play"></i></span>
-              <span class="btn-stop btn btn-danger"><i class="fa fa-stop"></i></span>
-            </div>
-          </div>
-        </div>
-      <div id="playlist"></div>
--->
-      <audio controls><source src="/audio/audio-{{_id}}-{{name}}" type="audio/mp3"></audio>
+
+      
       <tr style="text-align: center">{{> soundName}}  <!-- name of sound--></tr>
-      <tr style="font-size: 25px">
-          <td style="valign: bottom">
-            <button name="like" class="btn btn-primary" style="float: left">Like</button>
-            <button name="Join" class="btn btn-warning join" style="float: right; margin: 0">Join</button>
-          </td>
-      </tr>
-    </table>
+        <tr style="font-size: 25px">
+            <td style="valign: bottom">
+              <button name="like" class="btn btn-primary" style="float: left">Like</button>
+              <button name="Join" class="btn btn-warning join" style="float: right; margin: 0">Join</button>
+            </td>
+        </tr>
+      </table>
     </div>
+  </div>
   {{/each}}
   </div>
   
@@ -68,7 +58,7 @@ Main Page
 
 <template name="navigation">
 
-  <nav class="navbar navbar-default" style="background-color: #59B0AA; border: none">
+  <nav class="navbar navbar-default" style="background-color: #88a2a0; border: none">
       <div class="container">
           <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -78,14 +68,14 @@ Main Page
               </button>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav navbar-right">
-                  <li><a href="/home">Home</a></li>
+              <ul class="nav navbar-nav navbar-right" style="background-color: #809897">
+                  <li><a href="/home" style="color: white">Home</a></li>
                   {{#if currentUser}}
-                  <li><a href="/profile">My Profile</a></li>
-                  <li><a href="#" class="logout">Logout</a></li>
+                  <li><a href="/profile" style="color: white">My Profile</a></li>
+                  <li><a href="#" class="logout" style="color: white">Logout</a></li>
                   {{else}}
-                  <li><a href="/register">Register</a></li>
-                  <li><a href="/login">Login</a></li>
+                  <li><a href="/register" style="color: white">Register</a></li>
+                  <li><a href="/login" style="color: white">Login</a></li>
                   {{/if}}
               </ul>
           </div>

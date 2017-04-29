@@ -1,8 +1,14 @@
 <template name="player">
-  <h2>Player</h2>
-  <button class="start">Start</button><button class="stop">Stop</button>
   <div class="container">
-    {{> uploadForm}}
+    <h2>Player</h2>
+    <div class="playlist-top-bar" style="margin-bottom:5px">
+      <button class="btn btn-default start">Start</button>
+      <button class="btn btn-default stop">Stop</button>
+      <label class="btn btn-default btn-file">
+        Upload <input type="file" name="audio" style="display:none;">
+      </label>
+      <button class="btn btn-default merge">Merge</button>
+    </div>
     <div id="top-bar" class="playlist-top-bar">
       <div class="playlist-toolbar">
         <div class="btn-group">
@@ -72,12 +78,4 @@
     </div>
     <div id="playlist"></div>
   </div>
-</template>
-
-<template name="uploadForm">
-  <form>
-    <label class="btn btn-default btn-file">
-      Upload <input type="file" name="audio" style="display:none;">
-    </label>
-  </form>
 </template>

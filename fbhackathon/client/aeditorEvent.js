@@ -17,6 +17,7 @@ export default function playerEvent(playlist) {
   var downloadUrl = undefined;
   var isLooping = false;
   var playoutPromises;
+  var renderingHere = false;
 
   function toggleActive(node) {
     var active = node.parentNode.querySelectorAll('.active');
@@ -224,6 +225,7 @@ export default function playerEvent(playlist) {
 
   $container.on("click", ".btn-download", function () {
     ee.emit('startaudiorendering', 'wav');
+    renderingHere = true;
   });
 
   $container.on("click", ".btn-seektotime", function () {
@@ -363,7 +365,7 @@ export default function playerEvent(playlist) {
   });
 
   ee.on('audiorenderingfinished', function (type, data) {
-    if (type == 'wav'){
+    if (type == 'wav' && renderingHere){
       if (downloadUrl) {
         window.URL.revokeObjectURL(downloadUrl);
       }
@@ -371,6 +373,7 @@ export default function playerEvent(playlist) {
       downloadUrl = window.URL.createObjectURL(data);
       displayDownloadLink(downloadUrl);
     }
+    renderingHere = false;
   });
 
   ee.on('finished', function () {

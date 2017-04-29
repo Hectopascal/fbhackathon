@@ -17,10 +17,10 @@ Main Page
 </template>
 
 <template name="Home">
-  <h2 style="text-align : center">Home</h2>
+
   {{#if currentUser}}
   <div class="buttonWrap">
-   <p>Welcome, {{currentUser.username}}</p>
+   <h2 style="text-align : center">Welcome, {{currentUser.username}}</h2>
 
   </div>
 
@@ -50,7 +50,7 @@ Main Page
 
 <template name="navigation">
 
-  <nav class="navbar navbar-default" style="background-color: #88a2a0; border: none">
+  <nav class="navbar navbar-default" style="background-color: #00686d; border: none">
       <div class="container">
           <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -60,7 +60,7 @@ Main Page
               </button>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav navbar-right" style="background-color: #809897">
+              <ul class="nav navbar-nav navbar-right" style="background-color: #004f4f">
                   <li><a href="/home" style="color: white">Home</a></li>
                   {{#if currentUser}}
                   <li><a href="/player" style="color: white">Editor</a></li>

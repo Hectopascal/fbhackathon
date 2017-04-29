@@ -1,8 +1,35 @@
-import { uploads } from '../api/collections.js';
+import { uploads, Audio } from '../api/collections.js';
+import aeditorInit from './aeditorInit.js';
+import aeditorEvent from './aeditorEvent';
 
+import './audiojs/audio.min.js';
+var playlist = undefined;
+
+Template.Home.onRendered(function (){
+    playlist = aeditorInit();
+    aeditorEvent(playlist);
+    console.log('lol');
+
+    audiojs.events.ready(function() {
+        var as = audiojs.createAll();
+    });
+    //console.log(Audio.find({}).count());
+    //var arr = uploads.find({}).toArray();
+
+    
+});
 Template.Home.helpers({
   uploads() {
-    
-  	return uploads.find({});
+
+  	return Audio.find({});
   },
+
+  songs(){
+
+        return Audio.find({}).map(
+        function(upload){
+            console.log(upload._id);
+            var path = '/audio/' + 'audio-' + upload._id + '-' + upload.name;
+    });
+  }
 })

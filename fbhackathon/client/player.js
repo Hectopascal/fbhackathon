@@ -71,6 +71,10 @@ Template.player.events({
             audioRecorder.startRecording();
             recording = 1;
         }
+        var button = document.getElementById("recordingButton");
+        button.classList.remove('start');
+        button.classList.add('stop');
+        button.innerHTML = "Stop Recording";
     },
     'click .stop': function(){
         if(recording) {
@@ -85,6 +89,10 @@ Template.player.events({
             recording = 0;
 
         }
+        var button = document.getElementById("recordingButton");
+        button.classList.add('start');
+        button.classList.remove('stop');
+        button.innerHTML = "Start Recording";
 
     },
 

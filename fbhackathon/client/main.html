@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/media/css/aeditor.css">
+        <link rel="stylesheet" href="/main.css">
     </header>
   {{>yield "main"}}
 </template>
@@ -19,11 +20,13 @@ Main Page
   
   <p>Welcome, {{currentUser.username}}</p>
   
-  <p>
+  
   {{#each uploads}}
-    test
+    <table id="soundBox">
+    {{> soundName}}
+    </table>
   {{/each}}
-  </p>
+  
   
   {{/if}}
 </template>
@@ -46,11 +49,11 @@ Main Page
     User ID: {{userID}}
     Username: {{currentUser.username}}
     Uploads: {{#each uploads}}
-    {{> owner}}
+    {{> soundName }}
     {{/each}}
 </template>
 
-<template name="owner">
+<template name="soundName">
 <!--Change name later to whatever path will be -->
 {{name}}
 </template>

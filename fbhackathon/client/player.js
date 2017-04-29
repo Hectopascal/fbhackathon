@@ -4,8 +4,8 @@ import aeditorEvent from './aeditorEvent';
 import { Audio, uploads } from '../api/collections';
 
 Template.player.onRendered(function (){
-    var playlist = aeditorInit();
-    aeditorEvent(playlist);
+    this.playlist = aeditorInit();
+    aeditorEvent(this.playlist);
 });
 
 Template.uploadForm.events({
@@ -22,5 +22,6 @@ Template.uploadForm.events({
           uploads.insert(obj);
         }
       });
+    }
   }
 });

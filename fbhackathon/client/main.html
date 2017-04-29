@@ -20,13 +20,15 @@ Main Page
 
 <template name="Home">
   <h2>Home</h2>
+  {{#if currentUser}}
   Welcome, {{currentUser.username}}
+  {{/if}}
 </template>
 
 <template name="login">
     <h2>Login</h2>
     <form class="login">
-        <p>Username: <input type="text" name="username"></p>
+        <p>Username: <input type="username" name="username"></p>
         <p>Password: <input type="password" name="password"></p>
         <p><input type="submit" value="Login"></p>
     </form>

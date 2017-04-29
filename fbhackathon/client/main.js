@@ -3,6 +3,8 @@ import { Template } from 'meteor/templating';
 import './main.html';
 import './routes.js'
 
+
+
 Template.register.events({
     'submit form': function(event){
         event.preventDefault();
@@ -11,8 +13,14 @@ Template.register.events({
         Accounts.createUser({
             username: username,
             password: password
-        });
-        Router.go('/home');
+        }, function(error){
+    		if(error){
+        		alert(error.reason); // Output error if registration fails
+    		} 
+    		else{
+    			Router.go('/home');
+    		}
+		});
     }
 });
 
@@ -36,7 +44,13 @@ Template.login.events({
         event.preventDefault();
         var username = $('[name=username]').val();
         var password = $('[name=password]').val();
-        Meteor.loginWithPassword(username, password);
-        Router.go('/home');
+        Meteor.loginWithPassword(username, password, function(error){
+        	if(error){
+    			alert(error);
+    		}
+    		else{
+    			Router.go('/home');
+    		}
+        });
     }
 });

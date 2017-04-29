@@ -19,8 +19,7 @@ Main Page
   <h2 style="text-align : center">Home</h2>
   {{#if currentUser}}
   <div class="buttonWrap">
-    <button class="start">Start</button><button class="stop">Stop</button>
-    <p>Welcome, {{currentUser.username}}</p>
+   <p>Welcome, {{currentUser.username}}</p>
   
   </div>
   
@@ -29,7 +28,20 @@ Main Page
   <div class="col-xs-3">
     <table id="soundBox">
       <tr>Placeholder name</tr>
-      <tr> <button class = play style="border-radius: 100%">play</button> </tr>
+      <!--lol-->
+      <div class="container">
+      <div id="top-bar" class="playlist-top-bar">
+          <div class="playlist-toolbar">
+            <div class="btn-group">
+              <span class="btn-pause btn btn-warning"><i class="fa fa-pause"></i></span>
+              <span class="btn-play btn btn-success"><i class="fa fa-play"></i></span>
+              <span class="btn-stop btn btn-danger"><i class="fa fa-stop"></i></span>
+            </div>
+          </div>
+        </div>
+      <div id="playlist"></div>
+      </div>
+
       <tr style="text-align: center">{{> soundName}}  <!-- name of sound--></tr>
       <tr style="font-size: 25px">
           <td style="valign: bottom">

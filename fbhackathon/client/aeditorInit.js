@@ -21,7 +21,7 @@ export default function playerInit() {
 
   playlist.load([
     {
-      "src": "media/audio/Vocals30.mp3",
+      "src": "/audio/Vocals30.mp3",
       "name": "Vocals",
       "fadeIn": {
         "duration": 0.5
@@ -35,7 +35,7 @@ export default function playerInit() {
       "waveOutlineColor": '#c0dce0'
     },
     {
-      "src": "media/audio/BassDrums30.mp3",
+      "src": "/audio/BassDrums30.mp3",
       "name": "Drums",
       "start": 8.5,
       "fadeIn": {
@@ -48,7 +48,7 @@ export default function playerInit() {
       }
     },
     {
-      "src": "media/audio/Guitar30.mp3",
+      "src": "/audio/Guitar30.mp3",
       "name": "Guitar",
       "start": 23.5,
       "fadeOut": {

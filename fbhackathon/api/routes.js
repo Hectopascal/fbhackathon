@@ -55,3 +55,21 @@ Router.route('/player', function(){
         to:"main"
     });
 });
+
+if (Meteor.isServer) {
+var fs = Npm.require('fs');
+Router.route('audio', {
+   name: 'audio',
+   path: /^\/audio\/(.*)$/,
+   where: 'server',
+   action: function() {
+     var filePath = Meteor.absolutePath + '/.audio/' + this.params[0];
+     var data = fs.readFileSync(filePath);
+     this.response.writeHead(200, {
+         'Content-Type': 'audio'
+     });
+     this.response.write(data);
+     this.response.end();
+   }
+});
+}

@@ -1,6 +1,7 @@
 <template name="player">
   <h2>Player</h2>
   <div class="container">
+    {{> uploadForm}}
     <div id="top-bar" class="playlist-top-bar">
       <div class="playlist-toolbar">
         <div class="btn-group">
@@ -70,4 +71,12 @@
     </div>
     <div id="playlist"></div>
   </div>
+</template>
+
+<template name="uploadForm">
+  <form>
+    <label class="btn btn-default btn-file">
+      Upload <input type="file" name="audio" style="display:none;">
+    </label>
+  </form>
 </template>

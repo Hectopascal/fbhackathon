@@ -7,6 +7,7 @@ var recording = 0;
 var audioRecorder = new AudioRecorder();
 var playlist = undefined;
 var renderingHere = false;
+var mergeName = undefined;
 
 function audioInsert(audioFile, append) {
   Audio.insert(audioFile, function (err, fileObj) {
@@ -51,7 +52,12 @@ Template.player.onRendered(function (){
     aeditorEvent(playlist);
     playlist.getEventEmitter().on('audiorenderingfinished', function (type, data) {
       if (renderingHere) {
-        var audioFile = new File([data], 'merge.wav');
+        if (!mergeName) {
+          mergeName = 'merge.wav';
+        } else {
+          mergeName += '.wav';
+        }
+        var audioFile = new File([data], mergeName);
         audioInsert(audioFile, false);
       }
       renderingHere = false;
@@ -91,6 +97,12 @@ Template.player.events({
 
     'click .merge': function(event) {
       playlist.getEventEmitter().emit('startaudiorendering', 'wav');
+      var nameArr = playlist.getInfo().map(function(value) {
+        var idx = value.name.lastIndexOf('.');
+        return value.name.substring(0, idx);
+      });
+      mergeName = nameArr.join('_');
+      console.log(mergeName);
       renderingHere = true;
     }
 });

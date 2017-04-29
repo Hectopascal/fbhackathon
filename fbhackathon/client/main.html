@@ -8,13 +8,6 @@
         <link rel="stylesheet" href="/main.css">
             <style>body { background-image: url("/media/background.png");; color: #ffffff }
             </style>
-
-        <script src="/audiojs/audio.min.js"></script>  
-        <script>
-          audiojs.events.ready(function() {
-            var as = audiojs.createAll();
-          });
-        </script>  
     </header>
   {{>yield "main"}}
 </template>
@@ -28,9 +21,9 @@ Main Page
   {{#if currentUser}}
   <div class="buttonWrap">
    <p>Welcome, {{currentUser.username}}</p>
-  
+
   </div>
-  
+
   <div class="row" style="background-color: #F5F5F5; color: black; margin: 20px; border-radius: 5px; padding: 5px; box-shadow: 5px 5px 10px;">
   {{#each uploads}}
     <div class="col-xs-3" style="border-radius: 4px; margin: 0px; padding: 0px">
@@ -42,7 +35,7 @@ Main Page
         <tr style="font-size: 25px">
             <td style="valign: bottom">
               <button name="like" class="btn btn-primary" style="float: left">Like</button>
-              <button audioId="{{_id}}" name="Join" class="btn btn-warning join" style="float: right; margin: 0">Join</button>
+              <button audioId="{{_id}}" audioName="{{name}}" name="Join" class="btn btn-warning join" style="float: right; margin: 0">Join</button>
             </td>
         </tr>
       </table>
@@ -50,8 +43,8 @@ Main Page
   </div>
   {{/each}}
   </div>
-  
-  
+
+
   {{/if}}
 </template>
 

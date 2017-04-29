@@ -1,7 +1,7 @@
 import { Template } from 'meteor/templating';
 import aeditorInit from './aeditorInit';
 import aeditorEvent from './aeditorEvent';
-import { Audio, uploads } from '../api/collections';
+import { Audio, uploads, userProfiles } from '../api/collections';
 import {AudioRecorder} from 'meteor/maxencecornet:audio-recorder';
 var recording = 0;
 var audioRecorder = new AudioRecorder();
@@ -38,7 +38,16 @@ function audioInsert(audioFile, append) {
   });
 }
 Template.player.onRendered(function (){
-    playlist = aeditorInit();
+    var audioId = Router.current().params.query.audioId;
+    var audioName = Router.current().params.query.audioName;
+    var audioInfo = null;
+    if (audioId && audioName) {
+      audioInfo = [{
+        src: '/audio/audio-' + audioId + '-' + audioName,
+        name: audioName,
+      }];
+    }
+    playlist = aeditorInit(audioInfo);
     aeditorEvent(playlist);
     playlist.getEventEmitter().on('audiorenderingfinished', function (type, data) {
       if (renderingHere) {
@@ -66,8 +75,8 @@ Template.player.events({
             });
             //audioRecorder.stopRecording('wav', 'wavFile');
 
-            recording = 0;          
-      
+            recording = 0;
+
         }
 
     },
@@ -81,7 +90,6 @@ Template.player.events({
     },
 
     'click .merge': function(event) {
-      console.log("asd");
       playlist.getEventEmitter().emit('startaudiorendering', 'wav');
       renderingHere = true;
     }

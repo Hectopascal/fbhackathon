@@ -1,4 +1,4 @@
-export default function playerInit() {
+export default function playerInit(audioInfo) {
   var WaveformPlaylist = require('waveform-playlist');
   var playlist = WaveformPlaylist.init({
     samplesPerPixel: 3000,
@@ -19,45 +19,48 @@ export default function playerInit() {
     zoomLevels: [500, 1000, 3000, 5000]
   });
 
-  playlist.load([
-    {
-      "src": "/audio/Vocals30.mp3",
-      "name": "Vocals",
-      "fadeIn": {
-        "duration": 0.5
+  if (!audioInfo) {
+    audioInfo = [
+      {
+        "src": "/audio/Vocals30.mp3",
+        "name": "Vocals",
+        "fadeIn": {
+          "duration": 0.5
+        },
+        "fadeOut": {
+          "duration": 0.5
+        },
+        "cuein": 5.918,
+        "cueout": 14.5,
+        "customClass": "vocals",
+        "waveOutlineColor": '#c0dce0'
       },
-      "fadeOut": {
-        "duration": 0.5
+      {
+        "src": "/audio/BassDrums30.mp3",
+        "name": "Drums",
+        "start": 8.5,
+        "fadeIn": {
+          "shape": "logarithmic",
+          "duration": 0.5
+        },
+        "fadeOut": {
+          "shape": "logarithmic",
+          "duration": 0.5
+        }
       },
-      "cuein": 5.918,
-      "cueout": 14.5,
-      "customClass": "vocals",
-      "waveOutlineColor": '#c0dce0'
-    },
-    {
-      "src": "/audio/BassDrums30.mp3",
-      "name": "Drums",
-      "start": 8.5,
-      "fadeIn": {
-        "shape": "logarithmic",
-        "duration": 0.5
-      },
-      "fadeOut": {
-        "shape": "logarithmic",
-        "duration": 0.5
+      {
+        "src": "/audio/Guitar30.mp3",
+        "name": "Guitar",
+        "start": 23.5,
+        "fadeOut": {
+          "shape": "linear",
+          "duration": 0.5
+        },
+        "cuein": 15
       }
-    },
-    {
-      "src": "/audio/Guitar30.mp3",
-      "name": "Guitar",
-      "start": 23.5,
-      "fadeOut": {
-        "shape": "linear",
-        "duration": 0.5
-      },
-      "cuein": 15
-    }
-  ]).then(function() {
+    ];
+  }
+  playlist.load(audioInfo).then(function() {
     //can do stuff with the playlist.
 
     //initialize the WAV exporter.

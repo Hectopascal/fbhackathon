@@ -22,5 +22,6 @@ Template.uploadForm.events({
           uploads.insert(obj);
         }
       });
+    }
   }
 });

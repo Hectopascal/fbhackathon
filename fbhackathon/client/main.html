@@ -36,14 +36,13 @@ Main Page
     <div class="col-xs-3" style="border-radius: 4px; margin: 0px; padding: 0px">
     <div  style="border: 2px solid black; border-radius: 4px; margin: 5px; padding: 0px; text-align: center;">
     <table id="soundBox">
-      <tr>Placeholder name</tr>
 
       <audio controls><source src="/audio/audio-{{_id}}-{{name}}" type="audio/mp3"></audio>
       <tr style="text-align: center">{{> soundName}}  <!-- name of sound--></tr>
         <tr style="font-size: 25px">
             <td style="valign: bottom">
               <button name="like" class="btn btn-primary" style="float: left">Like</button>
-              <button name="Join" class="btn btn-warning join" style="float: right; margin: 0">Join</button>
+              <button audioId="{{_id}}" name="Join" class="btn btn-warning join" style="float: right; margin: 0">Join</button>
             </td>
         </tr>
       </table>

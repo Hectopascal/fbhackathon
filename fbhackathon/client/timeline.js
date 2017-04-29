@@ -20,16 +20,6 @@ Template.Home.onRendered(function (){
 });
 Template.Home.helpers({
   uploads() {
-
   	return Audio.find({});
-  },
-
-  songs(){
-
-        return Audio.find({}).map(
-        function(upload){
-            console.log(upload._id);
-            var path = '/audio/' + 'audio-' + upload._id + '-' + upload.name;
-    });
   }
 })

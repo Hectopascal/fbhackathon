@@ -24,3 +24,5 @@ accounts-ui
 iron:router
 cfs:standard-packages
 cfs:filesystem
+ostrio:meteor-root
+cfs:gridfs

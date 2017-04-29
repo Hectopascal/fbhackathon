@@ -14,7 +14,7 @@ Router.route('/', function (){
 Router.route('/register', function () {
   this.render('navigation', {
     to:"top"
-  });   
+  });
   this.render('register', {
     to:"main"
   });
@@ -44,5 +44,14 @@ Router.route('/profile', function(){
     });
     this.render('profile', {
         to: "main"
+    });
+});
+
+Router.route('/player', function(){
+    this.render('navigation', {
+        to:"top"
+    });
+    this.render('player', {
+        to:"main"
     });
 });

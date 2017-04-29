@@ -5,6 +5,8 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/media/css/aeditor.css">
         <link rel="stylesheet" href="/main.css">
+            <style>body { background-color: #197972; color: #ffffff }
+            </style>
     </header>
   {{>yield "main"}}
 </template>
@@ -14,34 +16,61 @@ Main Page
 </template>
 
 <template name="Home">
-  <h2>Home</h2>
-  <button class="start">Start</button><button class="stop">Stop</button>
+  <h2 style="text-align : center">Home</h2>
   {{#if currentUser}}
+  <div class="buttonWrap">
+    <button class="start">Start</button><button class="stop">Stop</button>
+    <p>Welcome, {{currentUser.username}}</p>
   
-  <p>Welcome, {{currentUser.username}}</p>
+  </div>
   
-  
+  <div class="row" style="background-color: #F5F5F5; color: black; margin: 20px; padding-top: 10px; padding">
   {{#each uploads}}
+  <div class="col-xs-3">
     <table id="soundBox">
-    {{> soundName}}
+      <tr>Placeholder name</tr>
+      <tr> <button class = play style="border-radius: 100%">play</button> </tr>
+      <tr style="text-align: center">{{> soundName}}  <!-- name of sound--></tr>
+      <tr style="font-size: 25px">
+          <td style="valign: bottom">
+            <button name="like" class="btn btn-primary" style="float: left">Like</button>
+            <button name="Join" class="btn btn-warning" style="float: right; margin: 0">Join</button>
+          </td>
+      </tr>
     </table>
+    </div>
   {{/each}}
+  </div>
   
   
   {{/if}}
 </template>
 
 <template name="navigation">
-  <ul>
-    <li><a href="/home">Home</a></li>
-    {{#if currentUser}}
-        <li><a href="/profile">My Profile</a></li>
-        <li><a href="#" class="logout">Logout</a></li>
-    {{else}}
-    <li><a href="/register">Register</a></li>
-    <li><a href="/login">Login</a></li>
-    {{/if}}
-  </ul>
+
+  <nav class="navbar navbar-default" style="background-color: #59B0AA; border: none">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right">
+                  <li><a href="/home">Home</a></li>
+                  {{#if currentUser}}
+                  <li><a href="/profile">My Profile</a></li>
+                  <li><a href="#" class="logout">Logout</a></li>
+                  {{else}}
+                  <li><a href="/register">Register</a></li>
+                  <li><a href="/login">Login</a></li>
+                  {{/if}}
+              </ul>
+          </div>
+      </div>
+  </nav>
 </template>
 
 <template name="profile">

@@ -1,12 +1,11 @@
 import {AudioRecorder} from 'meteor/maxencecornet:audio-recorder';
 var recording = 0;
+var audioRecorder = new AudioRecorder();
 Template.Home.events({
 
     'click .start': function(){
  
         if(!recording){
-
-            var audioRecorder = new AudioRecorder();
             audioRecorder.startRecording();
             recording = 1;
         }

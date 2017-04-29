@@ -15,7 +15,7 @@ Template.Home.events({
     'click .stop': function(){
         if(recording) {
             audioRecorder.stopRecording('Uint8Array', 'ArrayBufferFile', function (error, result) {
-                Audio.insert(result);
+                Audio.insert(new Blob(result));
             });
             //audioRecorder.stopRecording('wav', 'wavFile');
             recording = 0;

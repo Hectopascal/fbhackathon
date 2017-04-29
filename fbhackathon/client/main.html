@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/media/css/aeditor.css">
         <link rel="stylesheet" href="/main.css">
-            <style>body { background-image: url("/media/background.png");; color: #ffffff }
+            <style>body { background-image: url("/media/background.png"); background-size: 100%; color: #ffffff }
             </style>
 
         <script src="/audiojs/audio.min.js"></script>  
@@ -83,12 +83,15 @@ Main Page
 </template>
 
 <template name="profile">
-    Profile:
-    User ID: {{userID}}
-    Username: {{currentUser.username}}
-    Uploads: {{#each uploads}}
-    {{> soundName }}
-    {{/each}}
+    <div style="background-color: white; border-radius: 5px; color: black; margin: 10px; padding: 15px">
+      Profile:
+      <p>User ID: {{userID}}</p>
+      <p>Username: {{currentUser.username}}</p>
+      <p>Uploads: </p>
+      {{#each uploads}}
+          <p>{{> soundName }}</p>
+      {{/each}}
+    </div>
 </template>
 
 <template name="soundName">

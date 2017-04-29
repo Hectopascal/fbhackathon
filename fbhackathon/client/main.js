@@ -5,6 +5,6 @@ import './loginRegister.html';
 import '../api/routes.js';
 import './loginRegister.js';
 import './profile.js';
-
+import './home.js';
 
 

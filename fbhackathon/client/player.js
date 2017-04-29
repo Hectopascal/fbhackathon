@@ -24,9 +24,9 @@ Template.player.events({
     'click .stop': function(){
         if(recording) {
             audioRecorder.stopRecording('Uint8Array', 'ArrayBufferFile', function (error, result) {
-                var data = new Blob([result],{type:'audio/mp3'});
+                var data = new Blob([result],{type:'audio/wav'});
                 //console.log('blah');
-                Audio.insert(new File([data],'input.mp3'),function (err, fileObj) {
+                Audio.insert(new File([data],'input.wav'),function (err, fileObj) {
                     var userId = Meteor.userId();
                     if (userId) {
                       var obj = {
@@ -49,8 +49,6 @@ Template.player.events({
                 });
             });
             //audioRecorder.stopRecording('wav', 'wavFile');
-             
-             //audioRecorder.stopRecording('wav', 'wavFile');
 
             recording = 0;
                

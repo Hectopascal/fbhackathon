@@ -24,3 +24,4 @@ accounts-ui
 iron:router
 cfs:standard-packages
 cfs:filesystem
+maxencecornet:audio-recorder

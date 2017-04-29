@@ -34,6 +34,14 @@ Main Page
 
 <template name="profile">
     Profile:
+    User ID: {{userID}}
     Username: {{currentUser.username}}
-    Uploads: {{uploads}}
+    Uploads: {{#each uploads}}
+    {{> owner}}
+    {{/each}}
+</template>
+
+<template name="owner">
+<!--Change name later to whatever path will be -->
+{{name}}
 </template>

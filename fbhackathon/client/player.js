@@ -6,6 +6,7 @@ import {AudioRecorder} from 'meteor/maxencecornet:audio-recorder';
 var recording = 0;
 var audioRecorder = new AudioRecorder();
 var playlist = undefined;
+var renderingHere = false;
 
 function audioInsert(audioFile, append) {
   Audio.insert(audioFile, function (err, fileObj) {
@@ -27,7 +28,7 @@ function audioInsert(audioFile, append) {
           audioInfo = playlist.getInfo();
           audioInfo.push(newAudioInfo);
         } else {
-          audioInfo = newAudioInfo;
+          audioInfo = [newAudioInfo];
         }
         playlist.clear().then(function() {
           playlist.load(audioInfo);
@@ -39,6 +40,13 @@ function audioInsert(audioFile, append) {
 Template.player.onRendered(function (){
     playlist = aeditorInit();
     aeditorEvent(playlist);
+    playlist.getEventEmitter().on('audiorenderingfinished', function (type, data) {
+      if (renderingHere) {
+        var audioFile = new File([data], 'merge.wav');
+        audioInsert(audioFile, false);
+      }
+      renderingHere = false;
+    });
 });
 Template.player.events({
 
@@ -71,5 +79,11 @@ Template.player.events({
         audioInsert(files[i], true);
       }
       event.target.value = '';
+    },
+
+    'click .merge': function(event) {
+      console.log("asd");
+      playlist.getEventEmitter().emit('startaudiorendering', 'wav');
+      renderingHere = true;
     }
 });

@@ -1,21 +1,10 @@
 <template name="ApplicationLayout">
-    <header>
-        {{>yield "top"}}
-    </header>
+  {{>yield "top"}}
   {{>yield "main"}}
 </template>
 
 <template name="Main">
 Main Page
-</template>
-
-<template name="register">
-    <h2>Register</h2>
-    <form class="register">
-        <p>Username: <input type="username" name="username"></p>
-        <p>Password: <input type="password" name="password"></p>
-        <p><input type="submit" value="Register"></p>
-    </form>
 </template>
 
 <template name="Home">
@@ -25,23 +14,21 @@ Main Page
   {{/if}}
 </template>
 
-<template name="login">
-    <h2>Login</h2>
-    <form class="login">
-        <p>Username: <input type="username" name="username"></p>
-        <p>Password: <input type="password" name="password"></p>
-        <p><input type="submit" value="Login"></p>
-    </form>
-</template>
-
 <template name="navigation">
   <ul>
     <li><a href="/home">Home</a></li>
     {{#if currentUser}}
+        <li><a href="/profile">My Profile</a></li>
         <li><a href="#" class="logout">Logout</a></li>
     {{else}}
     <li><a href="/register">Register</a></li>
     <li><a href="/login">Login</a></li>
     {{/if}}
   </ul>
+</template>
+
+<template name="profile">
+    Profile:
+    Username: {{currentUser.username}}
+    Uploads: {{uploads}}
 </template>

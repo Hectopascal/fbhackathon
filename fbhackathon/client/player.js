@@ -67,10 +67,7 @@ Template.player.events({
             //audioRecorder.stopRecording('wav', 'wavFile');
 
             recording = 0;          
-        }   
-    }
-});
-
+      
         }
 
     },

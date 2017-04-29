@@ -16,7 +16,15 @@ Main Page
   <button class="start">Start</button><button class='stop'>Stop</button>
   <h2>Home</h2>
   {{#if currentUser}}
-  Welcome, {{currentUser.username}}
+  
+  <p>Welcome, {{currentUser.username}}</p>
+  
+  <p>
+  {{#each uploads}}
+    test
+  {{/each}}
+  </p>
+  
   {{/if}}
 </template>
 

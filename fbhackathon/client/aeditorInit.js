@@ -21,7 +21,7 @@ export default function playerInit(audioInfo) {
 
   if (!audioInfo) {
     audioInfo = [
-      {
+     /* {
         "src": "/audio/Vocals30.mp3",
         "name": "Vocals",
         "fadeIn": {
@@ -57,7 +57,7 @@ export default function playerInit(audioInfo) {
           "duration": 0.5
         },
         "cuein": 15
-      }
+      }*/
     ];
   }
   playlist.load(audioInfo).then(function() {

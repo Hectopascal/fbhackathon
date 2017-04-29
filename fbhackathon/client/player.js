@@ -3,9 +3,11 @@ import aeditorInit from './aeditorInit';
 import aeditorEvent from './aeditorEvent';
 import { Audio, uploads } from '../api/collections';
 
+var playlist = undefined;
+
 Template.player.onRendered(function (){
-    this.playlist = aeditorInit();
-    aeditorEvent(this.playlist);
+    playlist = aeditorInit();
+    aeditorEvent(playlist);
 });
 
 Template.uploadForm.events({
@@ -20,6 +22,16 @@ Template.uploadForm.events({
             audioId: fileObj._id
           };
           uploads.insert(obj);
+          fileObj.on("uploaded", function () {
+            var audioInfo = playlist.getInfo();
+            var path = '/audio/' + 'audio-' + fileObj._id + '-' + fileObj.name();
+            audioInfo.push({
+              src: path,
+              name: fileObj.name(),
+            });
+            playlist.getEventEmitter().emit('clear');
+            playlist.load(audioInfo);
+          });
         }
       });
     }

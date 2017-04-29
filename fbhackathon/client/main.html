@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/media/css/aeditor.css">
         <link rel="stylesheet" href="/main.css">
-            <style>body { background-image: url("/media/background.png");; color: #ffffff }
+            <style>body { background-image: url("/media/background.png"); background-size: 100%; color: #ffffff }
             </style>
     </header>
   {{>yield "main"}}
@@ -63,11 +63,12 @@ Main Page
               <ul class="nav navbar-nav navbar-right" style="background-color: #809897">
                   <li><a href="/home" style="color: white">Home</a></li>
                   {{#if currentUser}}
-                  <li><a href="/profile" style="color: white">My Profile</a></li>
+                  <li><a href="/player" style="color: white">Editor</a></li>
                   <li><a href="#" class="logout" style="color: white">Logout</a></li>
                   {{else}}
                   <li><a href="/register" style="color: white">Register</a></li>
                   <li><a href="/login" style="color: white">Login</a></li>
+
                   {{/if}}
               </ul>
           </div>
@@ -76,12 +77,15 @@ Main Page
 </template>
 
 <template name="profile">
-    Profile:
-    User ID: {{userID}}
-    Username: {{currentUser.username}}
-    Uploads: {{#each uploads}}
-    {{> soundName }}
-    {{/each}}
+    <div style="background-color: white; border-radius: 5px; color: black; margin: 10px; padding: 15px">
+      Profile:
+      <p>User ID: {{userID}}</p>
+      <p>Username: {{currentUser.username}}</p>
+      <p>Uploads: </p>
+      {{#each uploads}}
+          <p>{{> soundName }}</p>
+      {{/each}}
+    </div>
 </template>
 
 <template name="soundName">

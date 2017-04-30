@@ -19,21 +19,23 @@ function audioInsert(audioFile, append) {
       };
       uploads.insert(obj);
       fileObj.once("uploaded", function () {
-        var path = '/audio/' + 'audio-' + fileObj._id + '-' + fileObj.name();
-        var newAudioInfo = {
-          src: path,
-          name: fileObj.name(),
-        }
-        var audioInfo;
-        if (append) {
-          audioInfo = playlist.getInfo();
-          audioInfo.push(newAudioInfo);
-        } else {
-          audioInfo = [newAudioInfo];
-        }
-        playlist.clear().then(function() {
-          playlist.load(audioInfo);
-        });
+        setTimeout(function() {
+          var path = '/audio/' + 'audio-' + fileObj._id + '-' + fileObj.name();
+          var newAudioInfo = {
+            src: path,
+            name: fileObj.name(),
+          }
+          var audioInfo;
+          if (append) {
+            audioInfo = playlist.getInfo();
+            audioInfo.push(newAudioInfo);
+          } else {
+            audioInfo = [newAudioInfo];
+          }
+          playlist.clear().then(function() {
+            playlist.load(audioInfo);
+          });
+        }, 500);
       });
     }
   });
